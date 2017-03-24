@@ -4,7 +4,7 @@
       <div class="hero-body">
         <div class="container has-text-centered">
           <div class="square">
-            <div class="columns is-gapless">
+            <div class="columns is-gapless is-mobile">
               <div class="column is-4">
                 Column
               </div>
@@ -40,5 +40,5 @@
   @import "css/bulma/elements/_all.sass";
   @import "css/bulma/grid/_all.sass";
   @import "css/bulma/components/_all.sass";
-  @import "css/bulma/styles.sass";
+  @import "css/styles.scss";
 </style>

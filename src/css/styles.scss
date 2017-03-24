@@ -1,0 +1,36 @@
+$desktop-width: 992px;
+$desktop-board-width: 480px;
+$tablet-width: 768px;
+$tablet-board-width: 480px;
+$phone-width: 576px;
+$phone-board-width: 280px;
+
+.square {
+    border: solid;
+    margin: auto;
+}
+
+.column {
+    border: solid;
+}
+
+@media (min-width: $phone-width) {
+    .square {
+    width: $phone-board-width;
+    height: $phone-board-width;
+    }
+}
+
+@media (min-width: $tablet-width) {
+    .square {
+    width: $tablet-board-width;
+    height: $tablet-board-width;
+    }
+}
+
+@media (min-width: $desktop-width) {
+    .square {
+    width: $desktop-board-width;
+    height: $desktop-board-width;
+    }
+}
