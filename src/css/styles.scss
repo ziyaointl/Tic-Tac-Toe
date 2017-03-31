@@ -12,6 +12,17 @@ $phone-board-width: 280px;
 @import "node_modules/bulma/sass/grid/_all.sass";
 @import "node_modules/bulma/sass/components/_all.sass";
 
+.centered {
+    display: block;
+    margin: auto;
+}
+
+td {
+    width: 100px;
+    height: 100px;
+    border: solid;
+}
+
 .square {
     border: solid;
     margin: auto;

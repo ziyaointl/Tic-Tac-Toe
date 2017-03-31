@@ -2,19 +2,25 @@
   <div id="app">
     <section class="hero is-light is-fullheight">
       <div class="hero-body">
-        <div class="container has-text-centered">
-          <div class="square">
-            <div class="columns is-gapless is-mobile">
-              <div class="column is-4">
-                Column
-              </div>
-              <div class="column is-4">
-                Column
-              </div>
-              <div class="column is-4">
-                Column
-              </div>
-            </div>
+        <div class="centered">
+          <div class="board">
+            <table>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>
