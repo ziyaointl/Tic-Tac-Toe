@@ -27,6 +27,13 @@ td {
     border: solid;
 }
 
+td > h2 {
+    font-size: 50px;
+    font-weight: 300;
+    padding-left: 30px;
+    padding-top: 10px;
+}
+
 .square {
     border: solid;
     margin: auto;
