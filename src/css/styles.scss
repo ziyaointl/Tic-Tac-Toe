@@ -12,6 +12,10 @@ $phone-board-width: 280px;
 @import "node_modules/bulma/sass/grid/_all.sass";
 @import "node_modules/bulma/sass/components/_all.sass";
 
+.title {
+    font-size: 20px;
+}
+
 .centered {
     display: block;
     margin: auto;
