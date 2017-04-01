@@ -102,6 +102,12 @@
           }
         }
         return "none";
+      },
+      getRow(index) {
+        return index / 3;
+      },
+      getColumn(index) {
+        return index % 3;
       }
     },
     mounted() {
