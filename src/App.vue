@@ -74,6 +74,7 @@
           } else {
             this.cells[i].innerHTML = "<h2>X</p2>";
           }
+          checkWin();
           this.isCircle = !this.isCircle;
         }
       },
@@ -94,6 +95,25 @@
       },
       checkColumn(index) {
         if (this.cells[index] === this.cells[index + 3] === this.cells[index + 6]) {
+          if (this.cells[startCell] === "O") {
+            return "O";
+          }
+          if (this.cells[startCell] === "X") {
+            return "X";
+          }
+        }
+        return "none";
+      },
+      checkDiagonal() {
+        if (this.cells[0] === this.cells[4] === this.cells[8]) {
+          if (this.cells[startCell] === "O") {
+            return "O";
+          }
+          if (this.cells[startCell] === "X") {
+            return "X";
+          }
+        }
+        if (this.cells[2] === this.cells[4] === this.cells[6]) {
           if (this.cells[startCell] === "O") {
             return "O";
           }
