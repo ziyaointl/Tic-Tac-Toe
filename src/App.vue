@@ -18,19 +18,19 @@
           <div class="board">
             <table>
               <tr>
-                <td @click="padClicked(0)"></td>
-                <td @click="padClicked(1)"></td>
-                <td @click="padClicked(2)"></td>
+                <td @click="cellClicked(0)"></td>
+                <td @click="cellClicked(1)"></td>
+                <td @click="cellClicked(2)"></td>
               </tr>
               <tr>
-                <td @click="padClicked(3)"></td>
-                <td @click="padClicked(4)"></td>
-                <td @click="padClicked(5)"></td>
+                <td @click="cellClicked(3)"></td>
+                <td @click="cellClicked(4)"></td>
+                <td @click="cellClicked(5)"></td>
               </tr>
               <tr>
-                <td @click="padClicked(6)"></td>
-                <td @click="padClicked(7)"></td>
-                <td @click="padClicked(8)"></td>
+                <td @click="cellClicked(6)"></td>
+                <td @click="cellClicked(7)"></td>
+                <td @click="cellClicked(8)"></td>
               </tr>
             </table>
           </div>
@@ -46,7 +46,8 @@
     data() {
       return {
         isCircle: true,
-        pads: document.getElementsByTagName("td")
+        cells: document.getElementsByTagName("td"),
+        states: []
       }
     },
     methods: {
@@ -59,10 +60,6 @@
       selectX() {
         this.closeModals();
         this.isCircle = false;
-        // let elements = document.getElementsByTagName("td");
-        // for (let i = 0; i < elements.length; ++i) {
-        //   elements[i].innerHTML = "<p>" + i + "</p>";
-        // }
       },
       selectO() {
         this.closeModals();
@@ -70,18 +67,46 @@
       reset() {
         isCircle = true;
       },
-      padClicked(i) {
-        if (this.pads[i].innerHTML === "") {
+      cellClicked(i) {
+        if (this.cells[i].innerHTML === "") {
           if (this.isCircle) {
-            this.pads[i].innerHTML = "<h2>O</p2>";
+            this.cells[i].innerHTML = "<h2>O</p2>";
           } else {
-            this.pads[i].innerHTML = "<h2>X</p2>";
+            this.cells[i].innerHTML = "<h2>X</p2>";
           }
           this.isCircle = !this.isCircle;
         }
       },
       checkWin() {
-        
+
+      },
+      checkRow(index) {
+        let startCell = index * 3;
+        if (this.cells[startCell] === this.cells[startCell + 1] === this.cells[startCell + 2]) {
+          if (this.cells[startCell] === "O") {
+            return "O";
+          }
+          if (this.cells[startCell] === "X") {
+            return "X";
+          }
+        }
+        return "none";
+      },
+      checkColumn(index) {
+        if (this.cells[index] === this.cells[index + 3] === this.cells[index + 6]) {
+          if (this.cells[startCell] === "O") {
+            return "O";
+          }
+          if (this.cells[startCell] === "X") {
+            return "X";
+          }
+        }
+        return "none";
+      }
+    },
+    mounted() {
+      for (let i = 0; i < this.cells.length; ++i) {
+        this.states.push("empty");
       }
     }
   }
