@@ -3,7 +3,7 @@
     <section class="hero is-light is-fullheight">
       <div class="hero-body">
         <div class="centered">
-          <div class="modal is-active">
+          <div class="modal is-active" id="symbol-selection">
             <div class="modal-background"></div>
             <div class="modal-content">
               <div class="card">
@@ -70,6 +70,7 @@
         for (let i = 0; i < this.cells.length; ++i) {
           this.cells[i].innerHTML = "";
         }
+        document.getElementById("symbol-selection").classList.add("is-active");
       },
       cellClicked(i) {
         if (this.cells[i].innerHTML === "") {
