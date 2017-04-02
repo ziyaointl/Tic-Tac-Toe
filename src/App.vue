@@ -86,6 +86,9 @@
           .checkDiagonal() === "X") {
           alert("X Won");
           this.reset();
+        } else if (this.numberOfEmptyCells() === 0) {
+          alert("Tie");
+          this.reset();
         }
       },
       checkRow(index) {
@@ -144,6 +147,15 @@
         }
         this.checkWin(i);
         this.isCircle = !this.isCircle;
+      },
+      numberOfEmptyCells() {
+        let ans = 0;
+        for (let i = 0; i < this.cells.length; ++i) {
+          if (this.cells[i].innerHTML === "") {
+            ans++;
+          }
+        }
+        return ans;
       }
     },
     mounted() {
