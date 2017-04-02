@@ -73,26 +73,18 @@
       },
       cellClicked(i) {
         if (this.cells[i].innerHTML === "") {
-          if (this.isCircle) {
-            this.cells[i].innerHTML = "<h2>O</p2>";
-            this.states[i] = "O";
-          } else {
-            this.cells[i].innerHTML = "<h2>X</p2>";
-            this.states[i] = "X";
-          }
-          console.log(this.compareCells(2, 4, 6));
-          this.checkWin(i);
-          this.isCircle = !this.isCircle;
+          this.placeSymbol(i);
+          this.play();
         }
       },
       checkWin(index) {
         if (this.checkColumn(this.getColumn(index)) === "O" || this.checkRow(this.getRow(index)) === "O" || this.checkDiagonal() ===
           "O") {
-          alert("O");
+          alert("O Won");
           this.reset();
         } else if (this.checkColumn(this.getColumn(index)) === "X" || this.checkRow(this.getRow(index)) === "X" || this
           .checkDiagonal() === "X") {
-          alert("X");
+          alert("X Won");
           this.reset();
         }
       },
@@ -129,6 +121,29 @@
           }
         }
         return "none";
+      },
+      play() {
+        let emptyCells = [];
+        for (let i = 0; i < this.cells.length; ++i) {
+          if (this.cells[i].innerHTML === "") {
+            emptyCells.push(i);
+          }
+        }
+        console.log(Math.random());
+        let index = Math.floor(Math.random() * emptyCells.length);
+        console.log(index);
+        this.placeSymbol(emptyCells[index]);
+      },
+      placeSymbol(i) {
+        if (this.isCircle) {
+          this.cells[i].innerHTML = "<h2>O</p2>";
+          this.states[i] = "O";
+        } else {
+          this.cells[i].innerHTML = "<h2>X</p2>";
+          this.states[i] = "X";
+        }
+        this.checkWin(i);
+        this.isCircle = !this.isCircle;
       }
     },
     mounted() {
