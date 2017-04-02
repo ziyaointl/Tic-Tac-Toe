@@ -71,63 +71,58 @@
         if (this.cells[i].innerHTML === "") {
           if (this.isCircle) {
             this.cells[i].innerHTML = "<h2>O</p2>";
+            this.states[i] = "O";
           } else {
             this.cells[i].innerHTML = "<h2>X</p2>";
+            this.states[i] = "X";
           }
-          checkWin();
+          console.log(this.compareCells(2, 4, 6));
+          this.checkWin(i);
           this.isCircle = !this.isCircle;
         }
       },
-      checkWin() {
-
+      checkWin(index) {
+        if (this.checkColumn(this.getColumn(index)) === "O" || this.checkRow(this.getRow(index)) === "O" || this.checkDiagonal() ===
+          "O") {
+          alert("O");
+        } else if (this.checkColumn(this.getColumn(index)) === "O" || this.checkRow(this.getRow(index)) === "O" || this
+          .checkDiagonal() === "O") {
+          alert("X");
+        }
       },
       checkRow(index) {
         let startCell = index * 3;
-        if (this.cells[startCell] === this.cells[startCell + 1] === this.cells[startCell + 2]) {
-          if (this.cells[startCell] === "O") {
-            return "O";
-          }
-          if (this.cells[startCell] === "X") {
-            return "X";
-          }
-        }
-        return "none";
+        return this.compareCells(startCell, startCell + 1, startCell + 2);
       },
       checkColumn(index) {
-        if (this.cells[index] === this.cells[index + 3] === this.cells[index + 6]) {
-          if (this.cells[startCell] === "O") {
-            return "O";
-          }
-          if (this.cells[startCell] === "X") {
-            return "X";
-          }
-        }
-        return "none";
+        return this.compareCells(index, index + 3, index + 6);
       },
       checkDiagonal() {
-        if (this.cells[0] === this.cells[4] === this.cells[8]) {
-          if (this.cells[startCell] === "O") {
-            return "O";
-          }
-          if (this.cells[startCell] === "X") {
-            return "X";
-          }
+        let result = this.compareCells(0, 4, 8);
+        if (result !== "none") {
+          return result;
         }
-        if (this.cells[2] === this.cells[4] === this.cells[6]) {
-          if (this.cells[startCell] === "O") {
-            return "O";
-          }
-          if (this.cells[startCell] === "X") {
-            return "X";
-          }
-        }
-        return "none";
+        result = this.compareCells(2, 4, 6);
+        return result;
       },
       getRow(index) {
-        return index / 3;
+        return Math.floor(index / 3);
       },
       getColumn(index) {
         return index % 3;
+      },
+      compareCells(index1, index2, index3) {
+        if (this.states[index1] === this.states[index2]) {
+          if (this.states[index2] === this.states[index3]) {
+            if (this.states[index1] === "O") {
+              return "O";
+            }
+            if (this.states[index1] === "X") {
+              return "X";
+            }
+          }
+        }
+        return "none";
       }
     },
     mounted() {
