@@ -65,7 +65,11 @@
         this.closeModals();
       },
       reset() {
-        isCircle = true;
+        this.isCircle = true;
+        this.states = [];
+        for (let i = 0; i < this.cells.length; ++i) {
+          this.cells[i].innerHTML = "";
+        }
       },
       cellClicked(i) {
         if (this.cells[i].innerHTML === "") {
@@ -85,9 +89,11 @@
         if (this.checkColumn(this.getColumn(index)) === "O" || this.checkRow(this.getRow(index)) === "O" || this.checkDiagonal() ===
           "O") {
           alert("O");
-        } else if (this.checkColumn(this.getColumn(index)) === "O" || this.checkRow(this.getRow(index)) === "O" || this
-          .checkDiagonal() === "O") {
+          this.reset();
+        } else if (this.checkColumn(this.getColumn(index)) === "X" || this.checkRow(this.getRow(index)) === "X" || this
+          .checkDiagonal() === "X") {
           alert("X");
+          this.reset();
         }
       },
       checkRow(index) {
