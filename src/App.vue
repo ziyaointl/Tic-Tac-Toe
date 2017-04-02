@@ -138,6 +138,7 @@
         this.placeSymbol(emptyCells[index]);
       },
       placeSymbol(i) {
+        let vm = this;
         if (this.isCircle) {
           this.cells[i].innerHTML = "<h2>O</p2>";
           this.states[i] = "O";
@@ -145,7 +146,9 @@
           this.cells[i].innerHTML = "<h2>X</p2>";
           this.states[i] = "X";
         }
-        this.checkWin(i);
+        setTimeout(function() {
+          vm.checkWin(i);
+        }, 100);
         this.isCircle = !this.isCircle;
       },
       numberOfEmptyCells() {
